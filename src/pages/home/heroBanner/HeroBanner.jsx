@@ -5,22 +5,22 @@ import { useSelector } from "react-redux";
 import "./style.scss"
 import useFetch from "../../../hooks/useFetch";
 import ContentWrapper from "../../../components/contentWrapper/ContentWrapper";
-import Img from "../../../components/lazyLoadingImage/img";
+import Img from "../../../components/lazyLoadingImage/Img";
 
 
 export default function HeroBanner() {
-  const [rendomBgUrl, setRendomBgUrl] = useState("")
+  const [rendomBgUrl, setRendomBgUrl] = useState();
   const [queryText, setQueryText] = useState("")
 
   const navigate = useNavigate()
-  const { data, loading } = useFetch('/movie/upcoming')
+  const { data, loading } = useFetch("/movie/popular");
 
   const { url } = useSelector((state) => state.home)
 
   useEffect(() => {
     const bg_path =
       url.backdrop +
-      data?.results?.[Math.floor(Math.random() * 20)]?.backdrop_path;
+      data?.results?.[Math.floor(Math.random() * 21)]?.backdrop_path;
 
     setRendomBgUrl(bg_path)
   }, [data])
@@ -38,7 +38,7 @@ export default function HeroBanner() {
         <div className="backdrop-img">
           <Img src={rendomBgUrl} />
         </div>
-      )}
+      ) }
 
       <div className="opacity-layer"></div>
       <ContentWrapper>
