@@ -20,8 +20,8 @@ export default function Trending() {
         <span className="carouselTitle">Trending</span>
 
         <SwitchTab data={["Day", "Week"]} onTabChange={onTabChange} />
-
       </ContentWrapper>
+      
       <Carousel data={data?.results} loading={loading} />
     </div>
   );
