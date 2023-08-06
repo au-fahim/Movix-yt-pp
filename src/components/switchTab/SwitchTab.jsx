@@ -11,7 +11,7 @@ export default function SwitchTab({data, onTabChange}) {
     setTimeout(() => {
       setSelectedTab(index)
     }, 300);
-    onTabChange(tab, index)
+    onTabChange(tab)
   }
 
   return (

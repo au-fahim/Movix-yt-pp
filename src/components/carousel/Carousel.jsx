@@ -10,6 +10,7 @@ import "./style.scss"
 import { useSelector } from "react-redux";
 import dayjs from "dayjs";
 import CircleRating from "../CircleRating/CircleRating";
+import Genres from "../genres/Genres";
 
 export default function Carousel({ data, loading }) {
   const carouselContainer = useRef()
@@ -17,7 +18,17 @@ export default function Carousel({ data, loading }) {
   const navigate = useNavigate()
 
   const navigation = (dir) => {
+    const container = carouselContainer.current
 
+    const scrollAmount =
+      dir === "left"
+        ? container.scrollLeft - (container.offsetWidth + 20)
+        : container.scrollLeft + (container.offsetWidth + 20);
+
+    container.scrollTo({
+      left: scrollAmount,
+      behavior: "smooth"
+    })
   }
 
   const skItem = () => {
@@ -45,7 +56,7 @@ export default function Carousel({ data, loading }) {
         />
 
         {!loading ? (
-          <div className="carouselItems">
+          <div className="carouselItems" ref={carouselContainer}>
             {data?.map((item) => {
               const posterUrl = item.poster_path
                 ? url.poster + item.poster_path
@@ -56,6 +67,7 @@ export default function Carousel({ data, loading }) {
                   <div className="posterBlock">
                     <Img src={posterUrl} />
                     <CircleRating rating={item.vote_average.toFixed(1)} />
+                    <Genres data={item.genre_ids.slice(0, 2)} />
                   </div>
                   <div className="textBlock">
                     <span className="title">{item.title || item.name}</span>
