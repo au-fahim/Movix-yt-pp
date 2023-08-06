@@ -18,14 +18,12 @@ export default function Popular() {
   return (
     <div className="carouselSection">
       <ContentWrapper>
-        <span className="carouselTitle">
-          What's Popular
-        </span>
+        <span className="carouselTitle">What's Popular</span>
 
         <SwitchTab data={["On TV", "In Theaters"]} onTabChange={onTabChange} />
       </ContentWrapper>
 
-      <Carousel data={data?.results} loading={loading} />
+      <Carousel data={data?.results} loading={loading} endpoint={endpoint} />
     </div>
-  )
+  );
 }

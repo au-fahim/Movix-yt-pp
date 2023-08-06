@@ -23,8 +23,8 @@ export default function Trending() {
 
         <SwitchTab data={["Today", "This Week"]} onTabChange={onTabChange} />
       </ContentWrapper>
-      
-      <Carousel data={data?.results} loading={loading} />
+
+      <Carousel data={data?.results} loading={loading} endpoint={endpoint} />
     </div>
   );
 }

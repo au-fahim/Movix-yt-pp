@@ -7,18 +7,20 @@ import PosterFallback from "/no-poster.png"
 import Img from './../lazyLoadingImage/Img';
 
 import "./style.scss"
+
 import { useSelector } from "react-redux";
 import dayjs from "dayjs";
 import CircleRating from "../CircleRating/CircleRating";
 import Genres from "../genres/Genres";
 
-export default function Carousel({ data, loading }) {
-  const carouselContainer = useRef()
-  const { url } = useSelector((state) => state.home)
-  const navigate = useNavigate()
+export default function Carousel({ data, loading, endpoint }) {
+  const carouselContainer = useRef();
+  const { url } = useSelector((state) => state.home);
+  const navigate = useNavigate();
 
+  // CAROUSEL LEFT & RIGHT SCROLL FUNCTION
   const navigation = (dir) => {
-    const container = carouselContainer.current
+    const container = carouselContainer.current;
 
     const scrollAmount =
       dir === "left"
@@ -27,10 +29,11 @@ export default function Carousel({ data, loading }) {
 
     container.scrollTo({
       left: scrollAmount,
-      behavior: "smooth"
-    })
-  }
+      behavior: "smooth",
+    });
+  };
 
+  // SKELTON FUNCTION
   const skItem = () => {
     return (
       <div className="skeletonItem">
@@ -40,8 +43,8 @@ export default function Carousel({ data, loading }) {
           <div className="date skeleton"></div>
         </div>
       </div>
-    )
-  }
+    );
+  };
 
   return (
     <div className="carousel">
@@ -63,7 +66,11 @@ export default function Carousel({ data, loading }) {
                 : PosterFallback;
 
               return (
-                <div key={item.id} className="carouselItem">
+                <div
+                  key={item.id}
+                  className="carouselItem"
+                  onClick={() => navigate(`/${item.media_type || endpoint}/${item.id}`)}
+                >
                   <div className="posterBlock">
                     <Img src={posterUrl} />
                     <CircleRating rating={item.vote_average.toFixed(1)} />
