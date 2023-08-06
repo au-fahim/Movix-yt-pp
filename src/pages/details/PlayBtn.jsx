@@ -1,4 +1,4 @@
-export default function PlayBtn() {
+export const PlayBtn = () => {
   return (
     <svg
       version="1.1"

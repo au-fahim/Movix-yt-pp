@@ -1,9 +1,10 @@
-import { useParams } from "react-router-dom";
-import useFetch from "../../hooks/useFetch";
+import DetailsBanner from "./detailsBanner/DetailsBanner";
 
 export default function Details() {
-  // const { mediaType, id } = useParams()
-  // const { data, loading } = useFetch(`/${mediaType}/${id}`)
 
-  return <section>Details</section>;
+  return (
+    <section>
+      <DetailsBanner />
+    </section>
+  );
 }
