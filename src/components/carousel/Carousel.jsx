@@ -69,7 +69,9 @@ export default function Carousel({ data, loading, endpoint }) {
                 <div
                   key={item.id}
                   className="carouselItem"
-                  onClick={() => navigate(`/${item.media_type || endpoint}/${item.id}`)}
+                  onClick={() =>
+                    navigate(`/${item.media_type || endpoint}/${item.id}`)
+                  }
                 >
                   <div className="posterBlock">
                     <Img src={posterUrl} />
@@ -79,7 +81,12 @@ export default function Carousel({ data, loading, endpoint }) {
                   <div className="textBlock">
                     <span className="title">{item.title || item.name}</span>
                     <span className="date">
-                      {dayjs(item.release_Date).format("MMM D, YYYY")}
+                      {item?.first_air_date && (
+                        dayjs(item.first_air_date).format("MMM D, YYYY")
+                      )}
+                      {item?.release_date && (
+                        dayjs(item.release_date).format("MMM D, YYYY")
+                      )}
                     </span>
                   </div>
                 </div>
