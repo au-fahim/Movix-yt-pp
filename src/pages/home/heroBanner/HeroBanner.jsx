@@ -39,9 +39,10 @@ export default function HeroBanner() {
         <div className="backdrop-img">
           <Img src={rendomBgUrl} />
         </div>
-      ) }
+      )}
 
       <div className="opacity-layer"></div>
+      
       <ContentWrapper>
         <div className="heroBannerContent">
           <span className="title">Welcome.</span>

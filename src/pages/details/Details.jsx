@@ -3,6 +3,8 @@ import useFetch from "../../hooks/useFetch";
 import DetailsBanner from "./detailsBanner/DetailsBanner";
 import Cast from "./cast/Cast";
 import VideoSection from "./videoSection/VideoSection";
+import Similar from "./carousels/Similar";
+import Recommendation from "./carousels/Recommendation";
 
 export default function Details() {
   const { mediaType, id } = useParams();
@@ -14,7 +16,7 @@ export default function Details() {
 
   // FILTERING OUT OFFICIAL TRAILER FROM RESPONSE
   const officialTrailer = videos?.results?.find(
-    (video) => video?.name === "Official Trailer" && video?.type === "Trailer"
+    (video) => video?.type === "Trailer"
   );
 
   return (
@@ -25,6 +27,10 @@ export default function Details() {
         videos={videos?.results}
         loading={!!videosLoading && videosLoading}
       />
+
+      {/* RELATED VIDEOS SECTION */}
+      <Similar mediaType={mediaType} id={id} />
+      <Recommendation mediaType={mediaType} id={id} />
     </section>
   );
 }

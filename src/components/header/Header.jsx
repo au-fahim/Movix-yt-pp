@@ -87,7 +87,7 @@ const Header = () => {
           <li
             className="menuItem"
             onClick={() => {
-              navigationHandler("ty");
+              navigationHandler("tv");
             }}
           >
             TV Shows

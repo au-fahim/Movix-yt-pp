@@ -13,7 +13,7 @@ import dayjs from "dayjs";
 import CircleRating from "../CircleRating/CircleRating";
 import Genres from "../genres/Genres";
 
-export default function Carousel({ data, loading, endpoint }) {
+export default function Carousel({title, data, loading, endpoint }) {
   const carouselContainer = useRef();
   const { url } = useSelector((state) => state.home);
   const navigate = useNavigate();
@@ -49,6 +49,12 @@ export default function Carousel({ data, loading, endpoint }) {
   return (
     <div className="carousel">
       <ContentWrapper>
+        {
+          !!title && (
+            <div className="carouselTitle">{ title }</div>
+          )
+        }
+
         <BiChevronLeftCircle
           className="carouselLeftNav arrow"
           onClick={() => navigation("left")}
