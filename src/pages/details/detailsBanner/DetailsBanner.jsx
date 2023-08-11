@@ -11,7 +11,7 @@ import useFetch from "../../../hooks/useFetch";
 import Img from "../../../components/lazyLoadingImage/Img";
 import Genres from "../../../components/genres/Genres";
 import VideoPopup from "../../../components/videoPopup/VideoPopup";
-// import CircleRating from "../../../components/CircleRating/CircleRating";
+import CircleRating from "../../../components/circleRating/CircleRating";
 import ContentWrapper from "../../../components/contentWrapper/ContentWrapper";
 
 
@@ -79,7 +79,7 @@ export default function DetailsBanner({ video, crew }) {
                     <Genres data={_genres} />
 
                     <div className="row">
-                      {/* <CircleRating rating={data.vote_average.toFixed(1)} /> */}
+                      <CircleRating rating={data.vote_average.toFixed(1)} />
 
                       {video ? (
                         <div
