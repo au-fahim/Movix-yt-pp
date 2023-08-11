@@ -3,7 +3,7 @@ import "./style.scss"
 import { useNavigate } from "react-router-dom"
 import PosterFallback from '/no-poster.png';
 import Img from "../lazyLoadingImage/Img";
-import CircleRating from "../CircleRating/CircleRating";
+// import CircleRating from "../CircleRating/CircleRating";
 import Genres from "../genres/Genres";
 import dayjs from 'dayjs';
 
@@ -23,7 +23,7 @@ export default function MovieCard({ data, fromSearch, mediaType }) {
         <Img className="posterImg" src={posterUrl} />
         {!fromSearch && (
           <>
-            <CircleRating rating={data.vote_average.toFixed(1)} />
+            {/* <CircleRating rating={data.vote_average.toFixed(1)} /> */}
             <Genres data={data.genre_ids.slice(0, 2)} />
           </>
         )}
