@@ -10,7 +10,7 @@ import "./style.scss"
 
 import { useSelector } from "react-redux";
 import dayjs from "dayjs";
-// import CircleRating from "../CircleRating/CircleRating";
+import CircleRating from "../circleRating/CircleRating";
 import Genres from "../genres/Genres";
 
 export default function Carousel({title, data, loading, endpoint }) {
